@@ -46,8 +46,7 @@ public class CustMenu {
         phone = input.nextLine();
         System.out.println("Please enter password ");
         password = input.nextLine();
-        Customer c = new Customer(name, password, phone, "Normal");
-        return c;
+        return new Customer(name, password, phone, "Normal");
     }
 
     public static void main (Customer c) {

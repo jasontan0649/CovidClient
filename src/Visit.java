@@ -13,7 +13,7 @@ public class Visit implements Serializable {
     private LocalDateTime dt;
     private int custID;
     private int shopID;
-    private final static String FILE_PATH = Initializer.CUR_PATH + "\\Visits..bin";
+    private final static String FILE_PATH = Initializer.CUR_PATH + "\\Visits.bin";
 
     private static void Serialize() {
         try {
