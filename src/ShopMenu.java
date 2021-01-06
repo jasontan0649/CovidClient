@@ -16,17 +16,16 @@ public class ShopMenu {
         while (true) {
             System.out.println("Please enter shop name ");
             name = input.nextLine();
-            //System.out.println("Please enter password ");
-            // password = input.nextLine();
+            System.out.println("Please enter password ");
+            password = input.nextLine();
             Shop s = Shop.getShopByName(name);
             if (s == null) {
                 System.out.println("No Shop found. Please try again");
                 continue;
             }
-            //if (c.getPassword().equals(password))
-            return s;
+            if (s.getPassword().equals(password))
+                return s;
+            System.out.println("Wrong password. \nPlease try again");
             }
-           // System.out.println("Wrong password. \nPlease try again");
         }
-
 }

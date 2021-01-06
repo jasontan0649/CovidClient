@@ -1,25 +1,20 @@
 import java.io.*;
 import java.util.ArrayList;
 
-public class Shop implements Serializable, Role {
+public class Shop extends Role {
     private static final long serialVersionUID = 6529685098267757690L;
     public static ArrayList<Shop> shops = new ArrayList<Shop>();
 
     private static int count = 0;
 
     private int id;
-
-    private String name;
-    private String phone;
-    private String status;
     private String manager;
     private final static String FILE_PATH = Initializer.CUR_PATH + "\\Shops.bin";
 
+
     public Shop(String name, String password, String phone, String status, String manager) {
+        super(name, password, phone, status);
         this.id = ++count;
-        setName(name);
-        setPhone(phone);
-        setStatus(status);
         setManager(manager);
         shops.add(this);
         Serialize();
@@ -61,28 +56,10 @@ public class Shop implements Serializable, Role {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
+    @Override
     public void setStatus(String status) {
-        this.status = status;
+        if (status.equals("Normal") || status.equals("Case"))
+            super.setStatus(status);
     }
 
     public String getManager() {
@@ -91,17 +68,6 @@ public class Shop implements Serializable, Role {
 
     public void setManager(String manager) {
         this.manager = manager;
-    }
-
-    @Override
-    public String toString() {
-        return "Shop{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                ", status='" + status + '\'' +
-                ", manager='" + manager + '\'' +
-                '}';
     }
 
     public static Shop getShopByName(String name) {
